@@ -34,7 +34,8 @@
     <script>
 
       var req = new XMLHttpRequest;
-      req.open("GET", "http://flip1.engr.oregonstate.edu:5125/?id=1&value=Mount_Elbrus", false);
+      req.open("GET", "http://flip1.engr.oregonstate.edu:5125/Mount_Elbrus", false);
+      // req.open("GET", "http://flip1.engr.oregonstate.edu:5125/?id=1&value=Mount_Elbrus", false);
       req.send(null);
       img_url = req.responseText;
       document.getElementById("Img").src = img_url;

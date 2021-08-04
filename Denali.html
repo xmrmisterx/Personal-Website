@@ -50,7 +50,8 @@ On September 2, 2015, the U.S. Geological Survey announced that the mountain is 
       // proxy = "https://warm-taiga-26874.herokuapp.com/";
 
       var req = new XMLHttpRequest;
-      req.open("GET", "http://flip1.engr.oregonstate.edu:5125/?id=1&value=Denali", false);
+      req.open("GET", "http://flip1.engr.oregonstate.edu:5125/Denali", false);
+      // req.open("GET", "http://flip1.engr.oregonstate.edu:5125/?id=1&value=Denali", false);
       req.send(null);
       img_url = req.responseText;
       document.getElementById("Img").src = img_url;
