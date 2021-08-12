@@ -7,15 +7,24 @@
 </head>
 
 <div class="topnav">
-    <a href="index.html">Home</a>
-  <a href="download.html">Download</a>
+
+  <a href="index.html">Home</a>
   <a class="active" href="Kilimanjaro.html">Kilimanjaro</a>
+  <a href="Mount Kenya.html">Mount Kenya</a>
   <a href="Mount Elbrus.html">Mount Elbrus</a>
+  <a href="Dykh-Tau.html">Dykh-Tau</a>
   <a href="Denali.html">Denali</a>
+  <a href="Mount Logan.html">Mount Logan</a>
   <a href="Mount Aconcagua.html">Mount Aconcagua</a>
+  <a href="Ojos del Salado.html">Ojos del Salado</a>
   <a href="Mount Everest.html">Mount Everest</a>
+  <a href="K2.html">K2</a>
   <a href="Vinson Massif.html">Vinson Massif</a>
+  <a href="Mount Tyree.html">Mount Tyree</a>
   <a href="Mount Kosciuszko.html">Mount Kosciuszko</a>
+  <a href="Mount Townsend.html">Mount Townsend</a>
+  <a href="download.html">Download</a>
+  
 </div>
 <br>
 <br>
@@ -35,13 +44,11 @@
 
       var req = new XMLHttpRequest;
       req.open("GET", "http://flip1.engr.oregonstate.edu:5125/Mount_Kilimanjaro", false);
-      // req.open("GET", "http://flip1.engr.oregonstate.edu:5125/?id=1&value=Mount_Kilimanjaro", false);
       req.send(null);
       img_url = req.responseText;
       document.getElementById("Img").src = img_url;
 
     </script>
-    <!-- <script src="script.js"></script> -->
 </body>
 
 </html>

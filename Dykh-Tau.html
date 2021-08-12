@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Mount Kosciuszko</title>
+  <title>Dykh-Tau</title>
 </head>
 
 <div class="topnav">
@@ -12,7 +12,7 @@
   <a href="Kilimanjaro.html">Kilimanjaro</a>
   <a href="Mount Kenya.html">Mount Kenya</a>
   <a href="Mount Elbrus.html">Mount Elbrus</a>
-  <a href="Dykh-Tau.html">Dykh-Tau</a>
+  <a class="active" href="Dykh-Tau.html">Dykh-Tau</a>
   <a href="Denali.html">Denali</a>
   <a href="Mount Logan.html">Mount Logan</a>
   <a href="Mount Aconcagua.html">Mount Aconcagua</a>
@@ -21,7 +21,7 @@
   <a href="K2.html">K2</a>
   <a href="Vinson Massif.html">Vinson Massif</a>
   <a href="Mount Tyree.html">Mount Tyree</a>
-  <a class="active" href="Mount Kosciuszko.html">Mount Kosciuszko</a>
+  <a href="Mount Kosciuszko.html">Mount Kosciuszko</a>
   <a href="Mount Townsend.html">Mount Townsend</a>
   <a href="download.html">Download</a>
   
@@ -30,18 +30,19 @@
 <br>
 
 <body>
-  <img src= alt="Mount Kosciuszko Pic" id="Img">
+  <img src= alt="Dykh-Tau Pic" id="Img">
   <br>
   <br>
-  <p1>
-    Mount Kosciuszko (KOZ-ee-OS-koh /ˌkɒziˈɒskoʊ/;[4] Ngarigo: Kunama Namadgi, Tar-gan-gil),[5][6] previously spelled Mount Kosciusko, is mainland Australia's tallest mountain, at 2,228 metres (7,310 ft) above sea level. It is located on the Main Range of the Snowy Mountains in Kosciuszko National Park, part of the Australian Alps National Parks and Reserves, in New South Wales, Australia, and is located west of Crackenback and close to Jindabyne.
+    <p1>
+        Dykh-Tau or Dykhtau (Russian: Дыхтау, Karachay-Balkar: Дых тау that is derived from Turkic "dik dagh" which means Jagged Mount), is a mountain located in Kabardino-Balkaria, Russia; its peak stands about 5 km (3 mi) north of the border with Georgia. Dykh-Tau is the second highest of the Caucasus Mountains, after Mount Elbrus, and is the second highest mountain in Europe.
+    <cite>[From Wikipedia]</cite>
   </p1>
-  <cite>[From Wikipedia]</cite>
+
     <link rel="stylesheet" href="styles.css">
     <script>
 
       var req = new XMLHttpRequest;
-      req.open("GET", "http://flip1.engr.oregonstate.edu:5125/Mount_Kosciuszko", false);
+      req.open("GET", "http://flip1.engr.oregonstate.edu:5125/Dykh-Tau", false);
       req.send(null);
       img_url = req.responseText;
       document.getElementById("Img").src = img_url;

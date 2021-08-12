@@ -30,11 +30,44 @@
     color: white;
   }
 
+/* center home page text */
+
+h1 {
+  text-align: center;
+  font-family:'Brush Script MT';
+  /* font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
+  font-size: 80px;
+}
+
 /* center mountain images */
 
 #Img {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 33%;
+  width: 35%;
+}
+
+/* create background image that spans home page */
+
+html { 
+  background: url(Mt._Kilimanjaro_12.2006.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+ /* make all text white */
+
+body {
+  color: white;
+}
+
+p2>a {
+  color: white;
+}
+
+p3>a {
+  color: white;
 }
