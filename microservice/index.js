@@ -1,22 +1,25 @@
 // const { urlencoded } = require('body-parser');
 // const { query } = require('express');
-// var express = require('express');
-// // var request = require('request');
+var express = require('express');
 // const https = require('https');
-// // var mysql = require('./dbcon.js');
-// var CORS = require('cors');
+var CORS = require('cors');
+const crypto = require('crypto');
+const axios = require('axios');
 
-// var app = express();
-// // var router = express.Router();
-// app.set('port', 5125);
-// app.use(express.json());
-// app.use(express.urlencoded({ extended: false }));
-// app.use(CORS());
+var app = express();
+app.set('port', 5125);
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(CORS());
+
+var item_number = 0;
+var img_url = '';
+// var query_str = '';
 
 // app.get('/:str', (req, res) => {
 
 //   query_str = req.params.str;
-//   console.log("req.params.str: " + query_str);
+//   console.log("query string: " + query_str);
 
 //   https.get("https://en.wikipedia.org/w/api.php?action=query&titles=" + query_str + "&prop=pageimages&format=json&formatversion=2&pithumbsize=300", (resp) => {
 //     let data = '';
@@ -30,8 +33,9 @@
 //     resp.on('end', () => {
 //       // console.log("data: " + data);
 //       parsed_JSON = JSON.parse(data);
-//       console.log("parsed_JSON: " + parsed_JSON);
+//       // console.log("parsed_JSON: " + parsed_JSON);
 //       var img_url = parsed_JSON.query.pages[0].thumbnail.source;
+//       console.log("image url: " + img_url);
 //       res.send(img_url);
 //     });
 
@@ -55,26 +59,17 @@
 //   console.log('Express started on http://localhost:' + app.get('port') + '; press Ctrl-C to terminate.');
 // });
 
-const { urlencoded } = require('body-parser');
-const { query } = require('express');
-var express = require('express');
-const https = require('https');
-var CORS = require('cors');
-const crypto = require('crypto');
-const axios = require('axios');
-
-var app = express();
-app.set('port', 5125);
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(CORS());
-
-var item_number = 0;
-var img_url = '';
-
 app.get('/:str', (req, res) => {
 
   query_str = req.params.str;
+  // console.log("query string: " + query_str);
+
+  // if (query_str == 'school'){
+  //   img_url = "https://commons.wikimedia.org/w/thumb.php?width=400&f=Larkmead_School,_Abingdon,_Oxfordshire.png";
+  //   // console.log("img url inside getImageName function: " + img_url);
+  //   res.send(img_url);
+  //   return;
+  // }
 
   (async () => {
     try {
@@ -125,8 +120,9 @@ app.get('/:str', (req, res) => {
       // create image url in this format: https://upload.wikimedia.org/wikipedia/commons/a/ab/image_name
 
       img_url = "https://commons.wikimedia.org/w/thumb.php?width=400&f=" + processed_image_name;
-      let big_img_url = "https://upload.wikimedia.org/wikipedia/commons/" + a + "/" + a + b + "/" + processed_image_name;
+      // let big_img_url = "https://upload.wikimedia.org/wikipedia/commons/" + a + "/" + a + b + "/" + processed_image_name;
 
+      // console.log("img url inside getImageName function: " + img_url);
       // console.log("img url inside getImageName function: " + img_url + " and big pic url: " + big_img_url);
 
     } catch (error) {
@@ -539,3 +535,41 @@ app.listen(app.get('port'), function(){
 // Hmmm.. this CSS3 trick works, but now our hyperlinks are hard to see. And in CSS, we can't make the images random? Ok, so we solved
 // it by making all text white. Alright, now we need 2 different CSS files. One for the other pages, and one for the home page, since
 // we don't want the other pages to have backgrounds of mountains.
+
+//*** One thing to note about committing to git. "git add --all" in the main folder will add all the files, "git commit -m '[message]'"
+// will commit the files, and "git push -u origin main" pushes it to the main branch.
+
+//*** For CSS, to select an element simply "[ele name] {[set properties]}", to select children of element do "[ele name] > [child ele]"
+// to select from id, do "#[id] {}", and to select class do ".[class name] {}"
+
+//*** To call forever, do "./node_modules/forever/bin/forever [command]", with the commands we're using being "stopall" to stop forever
+// , "start index.js 5125" to start file name and port, and "list" to get the list of forever processes ; "Ctrl L" to clear terminal
+
+// Figure out why we are getting "undefined" and that "favicom" for the return value and query str. What happens if we set the "query"
+// string variable outside the get route, does that change anything? Google axios and check the ".then" format and see if that changes
+// anything in our code. Put the server code on heroku so that people can visit it and not have to log into cisco anyconnect. also,
+// what if we return out of the function after sending the img url, does that change anything?
+
+// So when we do it from the browser, we are getting these weird favicon.ico query strings, and also this undefined thing as well. it
+// seems like the function is running twice, not sure why it sends console.logs the query string twice. ok, so what happens if we change
+// the query str to an outer variable, does that change anything? Actually, we didn't do a let on it, so let's put a let before the
+// variable and see if anything happens. That didn't do anything. What about defining it as a const? Interesting, defining it as let,
+// const, or even setting the variable outside, doesn't change this weird favicon query str we get when we do it the get request from
+// the browser.
+
+// Let's google this? Hmmm apparently it's some weird request that gets send by the browser automatically, to find an image for the
+// website? or some pic? it's not bc of somehow us coding it badly lol? Yeah, the calls from the web pages themselves don't do this.
+
+// Let's get this server code on heroku next. We're reading mroe about this favicon.ico thing, and I think it's the little small image
+// that is to the left of the top of the page. Could be something to talk about in interviews. We never knew this was even a thing, but
+// yeah, it keeps showing up, bc the website is automatically querying it from the flip page. I guess we don't see if bc, either the
+// webr.oregonstate.edu page has an image, or that page doesn't request one, but it's funny, we thought there was something wrong with
+// the code.
+
+// *** We can log into heroku with "heroku login -i", username is our email and pw is school password.
+
+// Ok, so we didn't follow the beginning of the tutorial. We needed to write a "Procfile", which looks like it just gives the command to
+// run what file, and put a start key value pair in our package json. There was also a mention of routing the index.html file for the
+// home page, but let's see what happens when we try to call "heroku local web" now. Lol, that actually worked, so that was great.
+// However, it says there's not route for the first page, which obv there isn't. Hmmmm.. we just want this to be the server, so we don't
+// want a route? No, we do, actually let teh code run, and test it with the get requests.
