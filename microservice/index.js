@@ -572,4 +572,8 @@ app.listen(app.get('port'), function(){
 // run what file, and put a start key value pair in our package json. There was also a mention of routing the index.html file for the
 // home page, but let's see what happens when we try to call "heroku local web" now. Lol, that actually worked, so that was great.
 // However, it says there's not route for the first page, which obv there isn't. Hmmmm.. we just want this to be the server, so we don't
-// want a route? No, we do, actually let teh code run, and test it with the get requests.
+// want a route? No, we do, actually let teh code run, and test it with the get requests. Ok, good, it looks like the server is up. Looks
+// like we set it up fine. Now, let's go to the engr website and see if it works. It didnt' work. Now that we think about it. It's obvious
+// why? It's on local host first of all, so we need an actual site, then we need to change our code to call from that site.
+
+// Let's first get this from localhost to an actual website.
