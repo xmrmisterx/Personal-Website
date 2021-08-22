@@ -30,7 +30,7 @@
 <br>
 
 <body>
-  <img src= alt="Kilimanjaro Pic" id="Img">
+  <img src="" alt="Kilimanjaro Pic" id="Img"/>
   <br>
   <br>
   <p1>
@@ -42,8 +42,12 @@
     <link rel="stylesheet" href="styles.css">
     <script>
 
+      proxy = "https://warm-taiga-26874.herokuapp.com/";
+
       var req = new XMLHttpRequest;
-      req.open("GET", "http://flip1.engr.oregonstate.edu:5125/Mount_Kilimanjaro", false);
+      req.open("GET", proxy + "https://salty-plains-18308.herokuapp.com/Mount_Kilimanjaro", false);
+      // req.open("GET", "https://salty-plains-18308.herokuapp.com/Mount_Kilimanjaro", false);
+      // req.open("GET", "http://flip1.engr.oregonstate.edu:5125/Mount_Kilimanjaro", false);
       req.send(null);
       img_url = req.responseText;
       document.getElementById("Img").src = img_url;

@@ -30,7 +30,7 @@
 <body>
     <br>
     <br>
-    This is a sample of the downloaded CSV file when viewed with Excel.
+    This is a sample of the CSV file when viewed with Excel.
     <br>
     <br>
     <br>
@@ -52,7 +52,7 @@
         var req = new XMLHttpRequest;
         req.open("GET", 'http://flip1.engr.oregonstate.edu:8523/csvmaker?j=' + request_obj, false);
         req.send(null);
-        console.log("reponse text: " + req.responseText);
+        // console.log("reponse text: " + req.responseText);
 
         // create new document element
 
@@ -62,7 +62,8 @@
 
         anchor.href = 'data:attachment/csv;charset=utf-8,' + encodeURI(req.responseText);
         anchor.target = '_blank';
-        anchor.download = 'mountain.csv';
+        anchor.download = 'data.csv';
+        // anchor.download = 'mountain.csv';
         anchor.style.display = 'none';
 
         // attach the new document element to the document and click the button

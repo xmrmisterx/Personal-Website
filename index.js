@@ -576,4 +576,35 @@ app.listen(app.get('port'), function(){
 // like we set it up fine. Now, let's go to the engr website and see if it works. It didnt' work. Now that we think about it. It's obvious
 // why? It's on local host first of all, so we need an actual site, then we need to change our code to call from that site.
 
-// Let's first get this from localhost to an actual website.
+// Let's first get this from localhost to an actual website. Ok, so we follow the steps, but there were a few problems (not suprised lol
+// ). first off, the instructions say to do "git push [app name] master" but we had to use "git push [app name] main" for it to actually
+// work. However, it says package.json on in our main file, so we move it from the microservices folder to the public html folder. First
+// time we recommit, it says the same thing, andwe realized we didn't save the file. Second time it still doesn't work, and we realized
+// we needed to add and commmit it. Third time it doesn't work (same package.json error), we had to google it and see that, no, it's
+// still not being recognized. We had to specifically 'git add ../package.json' and not "git add ." to add all, bc it by default doesn't
+// add it, but then we also have to commit it, which we forgot to do lol, so we finally commit it then run "git push [appname] main", and
+// it finally said it deployed successfully. Now, let's see if it works now.
+
+// Lol, now we are getting a "application error". To get error logs for the app "heroku logs --tail --app [app name]"
+
+// Ok, so currently we were able to push it to the local host, but when we try to set up our server code with heroku, then try to call
+// get request from browser, we get "Error: The requested API endpoint was not found. Are you using the right HTTP verb (i.e. `GET` vs.
+// `POST`), and did you specify your intended version with the `Accept` header?" and when we try to call the api from the kilimanjaro
+// .html page we get "Resource requests whose URLs contained both removed whitespace (`\n`, `\r`, `\t`) characters and less-than 
+// characters (`<`) are blocked. Please remove newlines and encode less-than characters from places like element attribute values in 
+// order to load these resources. See https://www.chromestatus.com/feature/5735596811091968 for more details."
+
+// Ok, so after a week off, we feel a little more refreshed and motivated. The day after having these issues, we had some ideas. One
+// mainly is to see what files are in this "app". I mean, before, on the local host, it was working, and I think there were only like 4
+// files, so maybe that's the issue? We just want the dbcons.js, package.json, procfile, and our index.js for the server code right? 
+// Let's google and see how we can see the files in our app. Ok, so first we have to log in, so "heroku login -i" and put in our email
+// and password, then we do "heroku run bash -a [APPNAME]" where appname is the name of our heroku app, then we can just "ls" to see its
+// files. Hmmm... I guess we can delete this, but maybe we want this app as the main website instead? Let's move the code to our database
+// folder and make a new app?
+
+// Ok, so we're planning to create a heroku app just with the database code... How do we create a new git and new heroku app again? Hmm
+// we are getting stuck. The running the node code from flip1 is working, but "heroku local web" is not for some reason. We're now unsure
+// if we want to separate these files. It seems like we can set an "app.use" to render the home page, then have that page handle GET
+// requests and be the public html too? Let's put a app.use to refer to our index.html and see what happens? I mean, the issue is, right
+// now, that our GET requests are not working. So we need to get GET requests working on a non flip URL so that we don't need to connect
+// to the flip VPN.
