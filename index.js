@@ -7,14 +7,16 @@ const crypto = require('crypto');
 const axios = require('axios');
 
 var app = express();
-// app.set('port', 5125);
+app.set('port', 5125);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(CORS());
 
 // set port for heroku
 
-var port = process.env.port || 5125
+// var host = '0.0.0.0';
+// var port = process.env.PORT || 8080
+// app.set('port', port);
 
 // set global variables
 
@@ -152,13 +154,13 @@ app.use(function(err, req, res, next){
   res.render('500');
 });
 
-app.listen(port, function(){
-  console.log('Express started on http://localhost:' + port + '; press Ctrl-C to terminate.');
-});
-
-// app.listen(app.get('port'), function(){
-//   console.log('Express started on http://localhost:' + app.get('port') + '; press Ctrl-C to terminate.');
+// app.listen(port, function(){
+//   console.log('Express started on http://localhost:' + port + '; press Ctrl-C to terminate.');
 // });
+
+app.listen(app.get('port'), function(){
+  console.log('Express started on http://localhost:' + app.get('port') + '; press Ctrl-C to terminate.');
+});
 
 // lol, so we tried HTTP request and it didn't work, but we changed it to not parse the data, and now it works, so I guess that's good.
 // Ok, we finally get the image url to send back in res. but is that where we want to send it?
@@ -623,5 +625,5 @@ app.listen(port, function(){
 // the app. In order to update our app, we used the command line "git push https://git.heroku.com/salty-plains-18308.git main", but we
 // are still getting the rejection ugh. Interesting, so I think we added the index.js file, but now we are getting this error
 // "Error R10 (Boot timeout) -> Web process failed to bind to $PORT within 60 seconds of launch". Ugh, we still get an application error.
-// Should we be trying locally first?
+// Should we be trying locally first? Using the "local.env.PORT || port" code, we are getting a port in use error wtf.
 
