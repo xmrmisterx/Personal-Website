@@ -7,10 +7,16 @@ const crypto = require('crypto');
 const axios = require('axios');
 
 var app = express();
-app.set('port', 5125);
+// app.set('port', 5125);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(CORS());
+
+// set port for heroku
+
+var port = process.env.port || 5125
+
+// set global variables
 
 var item_number = 0;
 var img_url = '';
@@ -146,9 +152,13 @@ app.use(function(err, req, res, next){
   res.render('500');
 });
 
-app.listen(app.get('port'), function(){
-  console.log('Express started on http://localhost:' + app.get('port') + '; press Ctrl-C to terminate.');
+app.listen(port), function(){
+  console.log('Express started on http://localhost:' + port + '; press Ctrl-C to terminate.');
 });
+
+// app.listen(app.get('port'), function(){
+//   console.log('Express started on http://localhost:' + app.get('port') + '; press Ctrl-C to terminate.');
+// });
 
 // lol, so we tried HTTP request and it didn't work, but we changed it to not parse the data, and now it works, so I guess that's good.
 // Ok, we finally get the image url to send back in res. but is that where we want to send it?
@@ -608,3 +618,8 @@ app.listen(app.get('port'), function(){
 // requests and be the public html too? Let's put a app.use to refer to our index.html and see what happens? I mean, the issue is, right
 // now, that our GET requests are not working. So we need to get GET requests working on a non flip URL so that we don't need to connect
 // to the flip VPN.
+
+// Hmm after printing the error log, it seems like it can't find index.js, so we moved the file to public html. Now how do  we update
+// the app. In order to update our app, we used the command line "git push https://git.heroku.com/salty-plains-18308.git main", but we
+// are still getting the rejection ugh. Interesting, so I think we added the index.js file, but now we are getting this error
+// "Error R10 (Boot timeout) -> Web process failed to bind to $PORT within 60 seconds of launch"
