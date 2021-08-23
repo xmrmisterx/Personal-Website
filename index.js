@@ -152,7 +152,7 @@ app.use(function(err, req, res, next){
   res.render('500');
 });
 
-app.listen(port), function(){
+app.listen(port, function(){
   console.log('Express started on http://localhost:' + port + '; press Ctrl-C to terminate.');
 });
 
@@ -619,7 +619,9 @@ app.listen(port), function(){
 // now, that our GET requests are not working. So we need to get GET requests working on a non flip URL so that we don't need to connect
 // to the flip VPN.
 
-// Hmm after printing the error log, it seems like it can't find index.js, so we moved the file to public html. Now how do  we update
+// ***Hmm after printing the error log, it seems like it can't find index.js, so we moved the file to public html. Now how do  we update
 // the app. In order to update our app, we used the command line "git push https://git.heroku.com/salty-plains-18308.git main", but we
 // are still getting the rejection ugh. Interesting, so I think we added the index.js file, but now we are getting this error
-// "Error R10 (Boot timeout) -> Web process failed to bind to $PORT within 60 seconds of launch"
+// "Error R10 (Boot timeout) -> Web process failed to bind to $PORT within 60 seconds of launch". Ugh, we still get an application error.
+// Should we be trying locally first?
+
