@@ -7,7 +7,7 @@ const crypto = require('crypto');
 const axios = require('axios');
 
 var app = express();
-app.set('port', 5125);
+// app.set('port', 5125);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(CORS());
@@ -15,8 +15,8 @@ app.use(CORS());
 // set port for heroku
 
 // var host = '0.0.0.0';
-// var port = process.env.PORT || 8080
-// app.set('port', port);
+var port = process.env.PORT || 8080
+app.set('port', port);
 
 // set global variables
 
