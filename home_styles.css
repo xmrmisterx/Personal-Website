@@ -1,0 +1,25 @@
+/* Site image styles */
+
+.site_image {
+  border: 5px solid rgb(83, 88, 3);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 80%;
+  height: auto;
+}
+
+/* Top image styles */
+
+.top_image {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+/* Inner lists have square bullets */
+
+ul.innerList{
+  list-style-type: square;
+}
+

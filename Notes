@@ -1,0 +1,152 @@
+-Ok, so this page is for combining all our projects into one. The first thing we want to do, is write a function that pings all our 
+heroku apps every 30 mins so that we don't have to wait for the sites to load, then we want to link our 3 current websites and test to
+make sure they respond and are not sleeping
+-remember for public html, it's "chmod 755 [file name]" to make the file public 
+-that's odd, so we go into our workout page console to find the address (we should be logging into heroku instead and get all the app 
+addresses, but we see that it's actually requesting from the flip1 server, wtf? let's look at the workout log frontend again)
+-actually , we don't want to make the pinger from this page, bc we want http, so put it in one of our other apps that uses http? yeah,
+we put it in our mountain backend page
+-ok, so the first thing we want to do now, is to create a little blurb and link all our our pages
+-***ok, so what are some ideas for our website? we want a side menu (instead of the horizontal menu we've been doing), with options for 
+"home" "websites" "games" and maybe other options as we think of them, we want slideshows of each website and game on the main page, and
+slideshows of websites and games separately on the websites and games pages, yeah that sounds pretty good
+-ok, so what do we need for a slideshow? we need to take pics of each of our 3 websites for the website slideshow, and obv for the games
+as well... since we actually have a verified account, can we make more apps and just make this another heroku app, since we'll always want a personal website, but might not always have this engr account? yeah verified accounts can make up to 100 apps, so we can make our
+app here, can create it to another site, when the time comes I guess
+-ok, so we have the slideshow code in our SW site, let's go ahead and copy it here and work on it
+-ok, so for the website, we want to get images of the websites, so let's wait a bit, and then we can get the images, and put it into our
+slide html (we also would want to link the pages on the picture, can we do that?)... so currently we have an img element, so we want to
+enclose the img element in an "a" element, which we can reference to a link, so something like this "<a href="[site link]"><img src=
+"smiley.gif" alt="HTML tutorial" style="width:42px;height:42px;"></a>"
+-***actually, now that we think about it, I like the idea of an Intro section, a Website section, and a Games section on the main page,
+ with the websites and games clickable images that link to the site/game in columns (cols of 3 probably), then the website and games 
+ pages can have slideshows instead... for each website and game, we can write a little blurb about it, like what we have in our resume
+-interesting, so apparently h1 tag in html is bigger, and as we move on in the headers, they decrease in size, wtf? so we actually want 
+all h1 headers if we want the same size I guess
+-the top looks kinda bare, we can put navigation up there, or maybe a pic, although I'm not sure what kinda pic we'd even want, ok, so 
+instead of doing columns, we can use articles? which apparently can break it up into 3 columns, like this code we found:
+
+ 63              <div id="news-items">
+ 64                  <header><h2>The latest news</h2></header>
+ 65  
+ 66                  <div id="item_1">
+ 67                      <article>
+ 68                          <header>
+ 69                              <img src="#" title="titel artikel" />
+ 70                              <h3>Lorem ipsum .....</h3>
+ 71                          </header>
+ 72                          <p>Lorem ipsum dolor sit amet,
+ 73                          adipiscing elit. Quisque semper, </p>
+ 74                          <a href="#">Read more</a>
+ 75                      </article>
+ 76                  </div>
+ 77  
+ 78  
+ 79                  <div id="item_2">
+ 80                      <article>
+ 81                          <header>
+ 82                              <img src="#" title="titel artikel" />
+ 83                              <h3>Lorem ipsum .....</h3>
+ 84                          </header>
+ 85                          <p>Lorem ipsum dolor sit amet,
+ 86                          adipiscing elit. Quisque semper, </p>
+ 87                          <a href="#">Read more</a>
+ 88                      </article>
+ 89                  </div>
+ 90  
+ 91  
+ 92                  <div id="item_3">
+ 93                      <article>
+ 94                          <header>
+ 95                              <img src="#" title="titel artikel" />
+ 96                              <h3>Lorem ipsum .....</h3>
+ 97                          </header>
+ 98                          <p>Lorem ipsum dolor sit amet,
+ 99                          adipiscing elit. Quisque semper, </p>
+100                          <a href="#">Read more</a>
+101                      </article>
+102                  </div>
+103              </div>
+
+- ok, so during our lunch break, we looked at some things that could convert python to browser, and it didn't seem that easy, we've
+bookmarked a couple of the best options, including repl, trinket, pys, bropython (ideally repl can handle our janggi game, since we 
+have other languages and repl is adjustable for languages)... interesting, so we though our huge ass code from janggi woldn't work, 
+but it goes ito the repl fine, that problem is, the screen is bunched up, and the coordinates are squished onto 2 lines instead of 1, 
+I wonder if there's a way to fix that? Damn, so we just tried the game again and yeah, it plays fine, it's just hard to look at bc the
+replit half the page, yeah, this is actually pretty cool and promising, we just need to play around with it a little more I guess
+- we added a header before our h1 and changed them to h1 and h2, but that look is different sizing, so we don't want that, the header 
+section didn't really do anything
+- interesting, so putting the h1's instead of section made the h1s smaller, which kind of made sense, but yeah, I don't think we have
+to worry about this... basically, we're trying to create 3 columns, can we do that with the div element?
+-interesting, so we're getting our columns to work, but the link directs from the current page, and we don't want that, so we need to
+add 'target="_blank" rel="noopener noreferrer"' after the web address of the anchor tag
+-ok, that worked, good, now we want to make that image way smaller, how do we that? to change the image size, we can use the style 
+code after the image alt name
+-ok, so we have all the images and links lined up, but it looks kinda cramped in a 3 column format, maybe just 1 per column is fine?
+looking over this, yeah, just having the page scroll down is fine. Also, I don't think we want the links on the images. Not only are 
+the images big, but images you don't really know to click, whereas hyperlinks you can click and know that you're going to another page
+intuitively
+-lol, our pages headers look exactly like the personal page headers, so let's make them underlined or something to make them stand out
+-ok, so we have the pages up with the images and their links (we do need to remove the column stuff), so now let's write descriptions
+for each website, then put the games in and create a left navigation bar
+-interesting, so we put in our tic tac toe code, and it works, but there's some weird error when an invalid coordinate is selected, it
+seems the game checks to see if the coordinates are valid, and it checks a "nil" value, but we are getting this rejection "no implicit
+ conversion of nil into Array (TypeError)"
+ -hangman doesn't seem to be playable since it wants to read a file, we should just include the file in the game, it's the text file I 
+ think
+ -ok, so we edited the look of our websites, and they look good now. Now we just have to get our games to work, starting with Janggi
+ -interesting, so we were able to create a Replit account (we already had one from doing some coding before I think) and created our 
+ Janggi replit, and it's almost the right size. We just need to resize it a little. With that said, it was very easy since it was in a 
+ link, just like the websites and such. Ok, so we want to embed the replit, instead of linking to it, since the embedded one we can adjust the game screen, so how do we do that? oh snap! we can embed it, and select the size of the screen with the html size things, however, on chrome, we had to "enable third party cookies" we were blocking it before... also, this is the original path for our replit
+ "https://replit.com/@xmrmisterx/Janggi-Korean-Chess-Game?v=1", but we had to use "<iframe frameborder="0" width="100%" height="500px" src="https://replit.com/@xmrmisterx/Janggi-Korean-Chess-Game?lite=1&outputonly=1"></iframe>" to get it to display without our code. If
+ we want the code in there, then use "?lite=1" instead of "?lite=1&outputonly=1" at the end
+ -ok cool, it looks like our Janggi game is working, which we didn't think we'd be able to do by today... let's try to get our tic tac 
+ toe up, we need to fix error when a wrong coordinate is used... maybe google that replit nil error before actually changing our ruby 
+ code?
+-ok, so we actually figured out what was strong, it was some string conversoin in the tic tac toe game, and we realized that when the
+wrong coordinates where picked, it didn't loop back, so we added a "redo" phrase after saying the coordinates are not valid, there was
+also a "retry", but that didn't do what we wanted
+-now, we see that the computer keeps picking random coordinates that are already picked, so can we, after we convert the coordinate and
+it's valid, remove it from the available coordinates so that the computer never "accidentally" picks a coordinate already taken? 
+interesting, so it looks like our code is already doing that, but maybe we are removing the values incorrectly, since they are still in
+the available coordinates array after being picked.
+-lol, we add tic tac toe, but now our local host page isn't loading, how nice, however, our main page from the engr site does load, which is good bc we can still test it
+-ok, we went over our website alot and I think we are almost there, we just need to add the dictionary to our hangman game and upload it, then update our resume with our pharmacy job and website and we can start applying for more internships
+-ok, so now we're onto our hangman ruby game, and we run it in the test replit for the ruby language, and it looks like the error is 
+saying that, we don't  have the "5desk.txt" file, so how do we include a file in a replit, can we just add a file?
+-ok, so there seems to be some issue generating our word array from the text file, and we're having a hard time testing it bc the file is so big, so let's change the file to a few words to test it, then go back to the big file once we figure out what the problem is
+-ok, so using a smaller file reveals that our "words array" is being made correctly, but when we create the "filtered words array", that's when we have a nil array, so something is going on there... in the filtered words array function, we have this line "words_array.select {|word| (5..12) === word.length}", and maybe that's not working, so put a puts in there and see
+-actually, looking over our code more, it seems like the issue is actually our words array? here is what we printed out for it... "words array: ["mother\nload\ncracker"]", so its just one big array, which is probably why when we try to select for 5 to 12 length words in our filtered word array function, it doesn't return anything "words_array.select {|word| (5..12) === word.length}", ok, let's
+see what our file is read as and then see how we're splitting it
+-ok, so here is our initial text from the text file "mother\nload\ncracker", so we want to split this, just split at the '\n', and currently our code for splitting is "words.split("\r\n")", so we are splitting at the \r too, so it's not doing anything.
+-ok, good, so changing "words.split("\r\n")" to "words.split("\n")" solved our problem, and now our game is running... so we try to load
+a game, just to see if it works, but obv nothing loaded bc we don't have anything saved, now let's try to play a game, and load and save, and see if that works, interesting, so loading the game when there's no saved file results in an error, so let's actually add a saved file so they load a blank game is it's the beginning?
+-ok, so in our load game function, we check to see if they type load and then we load the game, but we want to check to see if there is
+a saved game file, and if not, just continue with a new game, so how do we check if there's a file? google says its "file.exist?" actually I think the format for the code is "File.exist? '[file name]'", so we  had forgotten a paranthesis around the and part of this
+file exists clause, but once we added it, the code seems to work, if the player has a saved game, it loads it, if not, it just starts a new game and doesn't break the game
+-ok, so here is the link to our hangman game, we didn't publish this one yet, bc we couldn't find the publish button, let's add it to 
+our index in an iframe and see if we even need to publish for it to show, and if not, remove the publishing from the previous 2 games...
+"https://replit.com/@xmrmisterx/Hangman-Game"
+-yeah, so hangman runs fine without having published it, and I think we like the look, well we don't like the look of the code there, but as a demonstration of what we can do, yeah we'd want the code there. it's better for them to access it there, they don't have to go to our github, which might mean something, with that said, we also want to link our github files for the websites on our personal page as well, so they can see everything
+-ok, so first off, let's clean up our resume by adding our work experience, GPA, and our website, then we can modify our website as desired when convenient
+-as we're looking at our website, we forgot that we wanted to put borders on some images, or maybe all the images. We can also add the
+calculator to our site as well
+-ok, we added the borders, and it took way longer than we thought, finding the right color, and centering the images took a while
+-ok, *** so what do we want to do now? let's clone our heroku code to our github, then link those githubs by the website links in our personal website, then maybe we can add our calculator on there as well? Make sure we clean up our front end and back end code before
+uploading to github, or we can just delete the comments after uploading, but definitely clean it up (we can transfer the notes from the js files into our notes file if we want to keep the notes), afterwards, let's apply to the big tech companies (Google, Amazon, etc...)
+-so we were thinking, maybe no all caps the categories and use lists instead, let's see how that looks,also we want an image for the top of the personal page as well, maybe something gears related?
+-ok, so I think we have the structure that we want, with the headers and the unordered lists for the sites and games, then another batch
+of lists for the site links, let's try ordered lists and see how they look relatively... yeah, I think we like the unordered bullet points better than the numbers, since the numbers aren't really significant
+-let's get an image for the top of the site now, then remove unnecessary stuff and upload those website files to our github
+-man, that gear image took a while, a while to find one we liked (an also free and public) and a while just to see the style we like on top
+- let's clean up all our website codes, resubmit to heroku cloud, then clone those into our github
+- ok, so we've cleaned up and resubmitted all the code to heroku, then cloned it to our github, now, let's test all the sites again to
+make sure they are workign, then insert them as unordered lists links into our index.html... we also need to create a github for this
+personal website once we are done
+-ok, our websites are working, so let's put them as links into index.html, then we can create a repository for this personal website page as well
+-ok, so we get on github, and our files are still no there on the left side for I guess most recent files, it's still those annoying
+files we weren't able to delete, so we google "delete Github repository" and it says to go to "settings" and scroll down to "Danger Zone" and then delete the repository (we have to type in the repository directory to confirm). I'm not sure why we couldn't do that before, but that's how we deleted those unnecessary files
+-we just remembered something, after we branched? off to our github from the heroku github, we weren't able to call "git push heroku master", we had to use "git push heroku main" which did update the heroku file, but not the github file, so remember that
+-so the workout log frontend was bad to look add, so we added some styling to it, and it looks a lot better now, let's review our content, then upload this as a file to our github as well
+-ok, so we were looking at our page, and the inner and outer lists having round bullets looked bad, so we set up a class for the inner
+"ul" lists and set them to have square bullets
